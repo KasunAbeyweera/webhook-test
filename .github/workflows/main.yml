@@ -10,7 +10,15 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
+      - name: List changed files
+        id: list-changes
+        run: |
+          echo "Changed files:"
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} > changed_files.txt
+          cat changed_files.txt
 
       - name: Check changes
         id: check-changes
@@ -18,4 +26,3 @@ jobs:
           echo "Checking changes:"
           git diff ${{ github.event.before }} ${{ github.sha }} > changes.txt
           cat changes.txt
-
