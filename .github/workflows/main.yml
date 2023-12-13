@@ -11,9 +11,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: List changed files
-        id: list-changes
+
+      - name: Check changes
+        id: check-changes
         run: |
-          echo "Changed files:"
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }} > changed_files.txt
-          cat changed_files.txt
+          echo "Checking changes:"
+          git diff ${{ github.event.before }} ${{ github.sha }} > changes.txt
+          cat changes.txt
+
