@@ -9,7 +9,7 @@ def current_date_time():
 
 if __name__ == '__main__':
     print(current_date_time())
-    print("hello")
+    print("hellooo")
 
 #test
 #teeest
